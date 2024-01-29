@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Childcare Lesson Plan Generator</title>
+</head>
+<body>
+    <h1>Lesson Plans</h1>
+    <ul>
+        {% for plan in lesson_plans %}
+            <li>
+                <strong>Age:</strong> {{ plan.age }} - {{ plan.content }}<br>
+                {% if plan.image_url %}
+                    <img src="{{ plan.image_url }}" alt="Lesson Plan Image">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Generate Lesson Plan</h2>
+    <a href="{{ url_for('generate_plan') }}">Generate a Lesson Plan</a>
+</body>
+</html>
