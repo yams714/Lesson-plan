@@ -1,0 +1,10 @@
+ChildcareLessonPlanGenerator/
+├── app/
+│   ├── static/
+│   │   └── style.css
+│   ├── templates/
+│   │   ├── index.html
+│   │   └── lesson_plan_form.html
+│   └── __init__.py
+├── main.py
+└── requirements.txt
