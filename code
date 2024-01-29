@@ -1,0 +1,28 @@
+from flask import Flask, render_template, request, redirect, url_for
+
+app = Flask(__name__)
+
+lesson_plans = []
+
+
+@app.route('/')
+def index():
+    return render_template('index.html', lesson_plans=lesson_plans)
+
+
+@app.route('/generate_plan', methods=['GET', 'POST'])
+def generate_plan():
+    if request.method == 'POST':
+        age = int(request.form.get('age'))
+        content = request.form.get('content')
+        image_url = request.form.get('image_url')
+
+        # Here, you would implement the logic to generate age-appropriate lesson plans
+        lesson_plan = {'age': age, 'content': content, 'image_url': image_url}
+        lesson_plans.append(lesson_plan)
+
+    return redirect(url_for('index'))
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
